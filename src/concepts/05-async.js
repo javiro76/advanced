@@ -8,7 +8,7 @@ import { heroes } from "../data/heroes"
  */
 export const asyncComponent = ( element ) => {
 
-  const id1 = '5d86371f97c29d020f1e1f6d';
+  const id1 = '5d86371f97c29d020f1e1f6dm';
 
   findHero( id1 )
       .then( name  => element.innerHTML = name )
@@ -27,6 +27,9 @@ export const asyncComponent = ( element ) => {
 const findHero = async(id) => {
 
   const hero = heroes.find( (hero) => hero.id === id );
+
+  if ( !hero ) 
+      throw `hero with id ${id} not found`;
 
   return hero.name;
 
